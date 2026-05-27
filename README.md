@@ -18,6 +18,16 @@ Drop it into Claude Desktop, Cursor, Cline, or any MCP-aware client and ask thin
 
 - `config://tracked-models` — curated watchlist sourced from [`tracked-models.json`](./tracked-models.json) at the project root. Edit the JSON file to change the list without redeploying.
 
+### Prompts
+
+| Prompt | Args | What it does |
+|--------|------|--------------|
+| `evaluate-model` | `modelId`, `useCase?` | Fetches a model card and asks for a structured evaluation (license, popularity, fit). |
+| `compare-for-task` | `task`, `count?` | Searches the Hub for top models on a pipeline task, runs `compare_models`, recommends one. |
+| `watchlist-digest` | — | Reads the tracked-models resource and produces a digest grouped by lane. |
+
+Prompts surface in MCP clients as pre-built templates — pick one, fill in the args, and the server returns the prompt messages the agent then runs. In Nitro Studio they appear under the **Prompts** tab.
+
 ### Widget
 
 - `model-card` — Next.js-rendered card showing clickable model id, downloads/likes, license + pipeline-tag badges, tags, and last-modified relative time.
@@ -95,7 +105,8 @@ src/
   modules/hf/
     hf.client.ts          # thin fetch wrapper over huggingface.co/api
     hf.tools.ts           # @Tool definitions (get_model, search_models, compare_models)
-    hf.module.ts          # registers tools + watchlist
+    hf.prompts.ts         # @Prompt templates (evaluate-model, compare-for-task, watchlist-digest)
+    hf.module.ts          # registers tools + watchlist + prompts
     watchlist.resource.ts # @Resource exposing tracked-models.json
   widgets/                # Next.js sub-project — one route per @Widget
 tracked-models.json       # curated watchlist data (edit me)

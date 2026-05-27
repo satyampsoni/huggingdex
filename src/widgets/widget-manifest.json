@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "widgets": [
+    {
+      "uri": "/model-card",
+      "name": "Model Card",
+      "description": "Renders a Hugging Face model card with downloads, likes, license, tags, and last-modified time.",
+      "examples": [
+        {
+          "name": "Mistral 7B v0.1",
+          "description": "Mistral AI's flagship open-source 7B parameter model.",
+          "data": {
+            "id": "mistralai/Mistral-7B-v0.1",
+            "author": "mistralai",
+            "downloads": 1234567,
+            "likes": 4321,
+            "pipelineTag": "text-generation",
+            "tags": ["transformers", "pytorch", "safetensors", "mistral", "text-generation"],
+            "license": "apache-2.0",
+            "lastModified": "2024-09-27T10:42:19.000Z"
+          }
+        },
+        {
+          "name": "Phi-3 mini",
+          "description": "Microsoft's small language model.",
+          "data": {
+            "id": "microsoft/Phi-3-mini-4k-instruct",
+            "author": "microsoft",
+            "downloads": 850000,
+            "likes": 1100,
+            "pipelineTag": "text-generation",
+            "tags": ["transformers", "pytorch", "phi3", "instruct"],
+            "license": "mit",
+            "lastModified": "2024-08-15T14:20:00.000Z"
+          }
+        }
+      ],
+      "tags": ["hugging-face", "model-card", "ml"]
+    }
+  ],
+  "generatedAt": "2025-01-01T00:00:00.000Z"
+}

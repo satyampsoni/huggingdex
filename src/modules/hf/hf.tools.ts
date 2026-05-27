@@ -51,4 +51,18 @@ export class HfTools {
       lastModified: h.lastModified
     }));
   }
+
+  @Tool({
+    name: 'compare_models',
+    description: 'Fetch model cards for a list of model ids and return them side-by-side, sorted by downloads (desc).',
+    inputSchema: z.object({
+      modelIds: z.array(z.string()).min(2).max(10).describe('Two to ten HF model ids to compare.')
+    })
+  })
+  async compareModels(input: any, ctx: ExecutionContext) {
+    ctx.logger.info('hf.compare_models', { count: input.modelIds.length });
+    const cards = await Promise.all(input.modelIds.map((id: string) => getModel(id).then(trim)));
+    cards.sort((a, b) => b.downloads - a.downloads);
+    return cards;
+  }
 }

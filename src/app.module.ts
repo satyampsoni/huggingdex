@@ -1,4 +1,5 @@
 import { McpApp, Module, ConfigModule } from '@nitrostack/core';
+import { HfModule } from './modules/hf/hf.module.js';
 import { SystemHealthCheck } from './health/system.health.js';
 
 @McpApp({
@@ -15,7 +16,8 @@ import { SystemHealthCheck } from './health/system.health.js';
   name: 'app',
   description: 'Root application module',
   imports: [
-    ConfigModule.forRoot()
+    ConfigModule.forRoot(),
+    HfModule
   ],
   providers: [
     SystemHealthCheck
